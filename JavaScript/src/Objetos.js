@@ -6,8 +6,11 @@
 //Ejemplo de objetos constantes
 const MyVoidObject = {} //Este es un objeto vacío, no posee ningún tipo de dato dentro de él.
 
-/* Objeto con atributos cada atributo debe de definirse con 2 puntos y cada final de atributo es con coma para
-referirse al siguiente atributo. */
+/* 
+    Objeto con atributos cada atributo debe de definirse con 2 puntos y cada final de atributo es con coma para
+    referirse al siguiente atributo. La última linea de atributos no necesariamente requiere coma pero es
+    una buena práctica colocarla.
+*/
 const MyObject = {
     ANumber : 12,
     AString : "esta es una cadena dentro de un objeto",
@@ -17,4 +20,8 @@ const MyObject = {
 console.log(MyVoidObject);
 
 console.log(MyObject);
+
+/* Para acceder a un atributo específico de un objeto es necesario llamarlo por su nombre tal como si fuera
+una variable, seguido de un punto y finalizando con el nombre del atributo. */
+console.log(MyObject.ANumber);
 
