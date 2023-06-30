@@ -16,6 +16,8 @@
     var nombre;
     const nombre;
 
+    recordar que no podemos darles nombres reservados a las variables o constantes para evitar conflictos.
+
     recordar que const es una constante, una vez declarada y asignada no se podrá reasignarse de nuevo.
 */
 let MyString;
@@ -26,15 +28,26 @@ let MyUndefined;
 
 //string
 MyString = "Esto es una cadena"; //No difiere el resultado si es con comillas dobles o simples.
+console.log(MyString);
 
 //boolean
 MyBoolean = true;   //true o false no se tiene que escribir en comillas.
+console.log(MyBoolean);
 
 //null
 MyNull = null;  //Al igual que true o false no debe de tener comillas.
+console.log(MyNull);
 
 //number
 MyNumber = 1245; //No debe de ser asignado con comillas dado que estos son valores no textos.
+console.log(MyNumber);
 
 //undefined
 //Al no asignarle nada a esta variable es lo que la hace indefinida.
+console.log(MyUndefined);
+
+MyString = "Esto ha cambiado dado que no esto es una variable let no const"
+console.log(MyString);
+
+
+
