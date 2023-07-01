@@ -35,7 +35,7 @@ console.log(Resultado);
 Resultado = MyNumber > MyOtherNumber;
 
 console.log(Resultado);
-
+ 
 //Menor o igual que
 Resultado = MyNumber <= MyOtherNumber;
 
