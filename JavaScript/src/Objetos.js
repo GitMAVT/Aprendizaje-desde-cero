@@ -11,7 +11,7 @@ const MyVoidObject = {} //Este es un objeto vacío, no posee ningún tipo de dat
     referirse al siguiente atributo. La última linea de atributos no necesariamente requiere coma pero es
     una buena práctica colocarla.
 */
-const MyObject = {
+const MyObject = {  //Un objeto const se le pueden cambiar los valores de los atributos más no puede ser nuevamente declarado
     ANumber : 12,
     AString : "esta es una cadena dentro de un objeto",
     ACondition : true,
