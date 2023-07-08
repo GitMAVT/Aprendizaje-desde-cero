@@ -1,16 +1,14 @@
-const todos = [];
+const todos = JSON.parse(localStorage.getItem("todos")) || [];
 
-window.onload = () =>
+function Actualiza(todos)
 {
-    const form = document.getElementById("todo-form")
-    form.onsubmit = (e) => 
-    {
-        e.preventDefault();
-        const todo = document.getElementById("todo")
-        const todoText = todo.value;
-        todo.value = "";
-        todos.push(todoText);
-        const todoList = document.getElementById("todo-list")
+    const todoStrings = JSON.stringify(todos)
+    localStorage.setItem("todos",todoStrings);
+}
+
+function Render ()
+{
+    const todoList = document.getElementById("todo-list")
          
         //Con map
         //map siempre debe de trabajar con return de lo contrario será
@@ -36,10 +34,32 @@ window.onload = () =>
         //De más general a más específico  
         const elementos = document.querySelectorAll("#todo-list li");
         elementos.forEach((elemento, i) => {
-            console.log(elemento, i);
-            elemen
+            
+            elemento.addEventListener("click",() => {
+
+                //Para eliminar niños de un padre en HTML
+                elemento.parentNode.removeChild(elemento);
+                todos.splice(i,1);
+                Actualiza(todos);
+                Render();   //Recursividad
+            })
             
         })
+}
+
+window.onload = () =>
+{
+    Render();
+    const form = document.getElementById("todo-form")
+    form.onsubmit = (e) => 
+    {
+        e.preventDefault();
+        const todo = document.getElementById("todo")
+        const todoText = todo.value;
+        todo.value = "";
+        todos.push(todoText);
+        Actualiza(todos);
+        Render();
     }
 }
 
