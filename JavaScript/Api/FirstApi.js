@@ -1,9 +1,14 @@
 const express = require("express");
+const mongoose = require("mongoose");
 // "const express para asignación framework express"
 //"require() para importar dependencias por nombre"
 const user = require("./User.Controller")
 const app = express();
 const port = 3000;
+
+app.use(express.json());
+
+mongoose.connect('mongodb+srv://Mauricio:m9BsCw9xu402bkAO@testcluster.38yokte.mongodb.net/MiApp?retryWrites=true&w=majority');
 
 app.get("/",user.list);
 app.post("/", user.create);

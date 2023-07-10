@@ -1,23 +1,39 @@
+const Users = require("./User")
 const User = 
 {
-    get: (req,res)=>
+    get: async (req,res)=>
     {
-        res.status(200).send("Este es un Chanchito");
+        const { id } = req.params;
+        const user = await Users.findOne({_id : id})
+        res.status(200).send(user);
     },
-    list: (req,res)=>
+    list: async (req,res)=>
     {
-        res.status(200).send("Hola Chanchito");
+        const users = await Users.find()
+        res.status(200).send(users);
     },
-    create: (req,res) =>
+    create: async (req,res) =>
     {
-        res.status(201).send("Creando un Chanchito");
+        const user = new Users(req.body);
+        const userSaved = await user.save();
+        res.status(201).send(userSaved._id);
     },
-    update:(req,res)=>
+    update: async (req,res)=>
     {
-        res.status(204).send("Actualizando Chanchito")
+        const { id } = req.params;
+        const user = await Users.findOne({_id : id})
+        Object.assign(user, req.body)
+        await user.save();
+        res.sendStatus(204);
     },
-    destroy:(req,res)=>
+    destroy: async (req,res)=>
     {
+        const { id } = req.params;
+        const user = await Users.findOne({_id : id})
+        if (user != null)
+        {
+            user.deleteOne();
+        }
         res.status(204).send("Eliminando un Chanchito :c");
     },
 }
